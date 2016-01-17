@@ -52,7 +52,51 @@ module.exports = {
                 next(err);
             });
 
+        //setInterval fo make call to db to update price
+        //var app = require('../../server/server.js');
+        /*
+        var findTimeReduce = function (currentPrice, minPrice, endDate) {
+            //if endDate is not passed in
+            endDate = endDate || 4;
+            //stand in for database
+            //to be set with post request
+            var db = { price: 100 };
+            var sec = ((endDate * 24)*60*60);
+            var count = 0;
+            var amountToDecrease = currentPrice/minPrice;
+            var results = [];
+            while (currentPrice >= minPrice){
+                results.push(currentPrice);
+                currentPrice = currentPrice - amountToDecrease;
+                count++;
+            }
 
+            var numberOfSecUntilIncrment = sec/count;
+            //flag to keep index for each setTimeout
+            var priceIndex = 0;
+            console.log(results);
+            
+            var recurse = function() {
+                console.log('recurse')
+                if(priceIndex < results.length - 1){
+                    priceIndex++;
+                    //current price in database update
+                    db.price = results[priceIndex];
+                    console.log(priceIndex, 'priceIndex');
+                    console.log(db.price, 'db.price');
+                    console.log('app.get("/setPrice", function(results[priceIndex]){ database price set action here })')
+                    //called with 30 seconds for simulation
+                    //to be changed to numberOfSecUntilIncrment at runtime
+                    setTimeout(recurse, 3000)
+                }
+            }
+            
+            //called with 30 seconds for simulation
+            //to be changed to numberOfSecUntilIncrment at runtime
+            setTimeout(recurse, 3000);
 
+        };
+
+        findTimeReduce(100, 10); */
     }
 };
