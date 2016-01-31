@@ -8,8 +8,8 @@ import ProductDetailModal from './productDetailModal';
 
 class ProductCard extends React.Component {
   render() {
-    let milliseconds = this.props.productDetail.timeRemaining || 1200;
-    let secondsRemaining = (milliseconds / 100);
+    let milliseconds = this.props.productDetail.timeRemaining;
+    let secondsRemaining = (milliseconds / 1000);
 
     return (
       <div className="col-md-4 portfolio-item">
