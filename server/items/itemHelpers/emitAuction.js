@@ -20,7 +20,6 @@ module.exports = {
                         } else {
                             priceFlag = item.priceIndex;
                         }
-
                         var transmitObject = {
                             _id: item._id,
                             price: item.priceSchedule[priceFlag].price,
