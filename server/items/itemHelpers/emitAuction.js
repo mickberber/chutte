@@ -30,7 +30,7 @@ module.exports = {
                             quantity: item.quantity,
                             category: item.category,
                             image: item.image,
-                            auctionsEnds: item.auctionsEnds
+                            auctionEnds: item.auctionEnds
                         };
                         console.log(transmitObject)
                         app.io.sockets.emit('productUpdate', transmitObject);
@@ -69,7 +69,7 @@ module.exports = {
                             quantity: item.quantity,
                             category: item.category,
                             image: item.image,
-                            auctionsEnds: item.auctionsEnds
+                            auctionEnds: item.auctionEnds
                         };
                         app.io.sockets.emit('productUpdate', transmitObject);
                         item.save(); 
