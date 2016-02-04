@@ -20,20 +20,20 @@ module.exports = {
                         } else {
                             priceFlag = item.priceIndex;
                         }
+
                         var transmitObject = {
                             _id: item._id,
-                            price: item.price,
+                            price: item.priceSchedule[priceFlag].price,
                             timeRemaining: item.priceSchedule[priceFlag].decrementTime,
                             description: item.description,
                             productName: item.productName,
                             createdBy: item.createdBy,
                             quantity: item.quantity,
                             category: item.category,
-                            image: item.image
+                            image: item.image,
+                            auctionsEnds: item.auctionsEnds
                         };
-                        console.log('price', item.price)
-                        console.log('emit', item._id);
-                        console.log('price priceSchedule', item.priceSchedule);
+                        console.log(transmitObject)
                         app.io.sockets.emit('productUpdate', transmitObject);
                         item.priceIndex++;
                         item.save(); 
@@ -54,21 +54,24 @@ module.exports = {
                     new Error('Item not found');
                 } else {
                     if(item.priceIndex < item.priceSchedule.length){
-                        console.log(item.priceSchedule[item.priceIndex].decrementTime)
+                        var priceFlag;
+                        if(item.priceIndex === -1){
+                            priceFlag = 0;
+                        } else {
+                            priceFlag = item.priceIndex;
+                        }
                         var transmitObject = {
                             _id: item._id,
-                            price: item.price,
-                            timeRemaining: item.priceSchedule[item.priceIndex].decrementTime,
+                            price: item.priceSchedule[priceFlag].price,
+                            timeRemaining: item.priceSchedule[priceFlag].decrementTime,
                             description: item.description,
                             productName: item.productName,
                             createdBy: item.createdBy,
                             quantity: item.quantity,
                             category: item.category,
-                            image: item.image
+                            image: item.image,
+                            auctionsEnds: item.auctionsEnds
                         };
-                        console.log('price', item.price)
-                        console.log('emit', item._id);
-                        console.log('price priceSchedule', item.priceSchedule);
                         app.io.sockets.emit('productUpdate', transmitObject);
                         item.save(); 
                     } else {
