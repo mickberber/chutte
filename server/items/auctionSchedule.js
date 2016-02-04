@@ -21,6 +21,7 @@ module.exports = {
             }
             currentPrice = Math.floor(currentPrice - amountToDecrementPrice);
         }
+        console.log(priceSchedule)
         results.push(priceSchedule);
         results.push(900000);
         return results
